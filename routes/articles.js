@@ -21,9 +21,10 @@ router.route('/').post(async (req, res, next) => {
   next();
 }, saveArticleAndRedirect('new'));
 
-// router.put('/:id', (req, res) => {
-//   req.article
-// }, saveArticleAndRedirect('edit'));
+router.put('/:id', async (req, res, next) => {
+  req.article = await Article.findById(req.params.id);
+  next();
+}, saveArticleAndRedirect('edit'));
 
 router.delete('/:id', async (req, res) => {
   await Article.findByIdAndDelete(req.params.id);
