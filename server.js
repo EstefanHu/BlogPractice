@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/blogTest', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
 
 const articleRouter = require('./routes/articles');
 app.use('/articles', articleRouter);
