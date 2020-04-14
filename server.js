@@ -1,25 +1,17 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const Article = require('./models/article');
 
 mongoose.connect('mongodb://localhost/blogTest', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  const articles = [
-    {
-      title: 'Test article',
-      createdAt: new Date,
-      description: 'Test Description'
-    },
-    {
-      title: 'Test article2',
-      createdAt: new Date,
-      description: 'Test Description2'
-    }
-  ];
+app.get('/', async (req, res) => {
+  const articles = await Article.find().sort({
+    createdAt: 'desc'
+  });
   res.render('./articles/index', { articles: articles });
 });
 
