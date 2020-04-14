@@ -3,7 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 const Article = require('./models/article');
 
-mongoose.connect('mongodb://localhost/blogTest', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/blogTest',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
