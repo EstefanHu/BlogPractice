@@ -1,4 +1,5 @@
 # BlogPractice
+A quick simulation of the technology for a blog site
 
 ### NPM packages
 1. **EJS**
