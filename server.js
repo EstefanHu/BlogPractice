@@ -7,9 +7,6 @@ mongoose.connect('mongodb://localhost/blogTest', { useNewUrlParser: true, useUni
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 
-const articleRouter = require('./routes/articles');
-app.use('/articles', articleRouter);
-
 app.get('/', (req, res) => {
   const articles = [
     {
@@ -25,5 +22,8 @@ app.get('/', (req, res) => {
   ];
   res.render('./articles/index', { articles: articles });
 });
+
+const articleRouter = require('./routes/articles');
+app.use('/articles', articleRouter);
 
 app.listen('4000', () => console.log('Listening on Port 4000'));

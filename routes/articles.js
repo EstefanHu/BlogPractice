@@ -2,7 +2,11 @@ const router = require('express').Router();
 const Article = require('./../models/article');
 
 router.route('/new').get((req, res) => {
-  res.render('./articles/new');
+  res.render('./articles/new', { article: new Article() });
+});
+
+router.route('/:id').get((req, res) => {
+
 });
 
 router.route('/').post(async (req, res) => {
@@ -16,7 +20,7 @@ router.route('/').post(async (req, res) => {
     article = await article.save();
     res.redirect(`/articles/${article.id}`);
   } catch(error) {
-
+    res.render('articles/new', { article: article });
   }
 });
 
