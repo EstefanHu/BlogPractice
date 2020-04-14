@@ -7,11 +7,18 @@ const articleRouter = require('./routes/articles');
 app.use('/articles', articleRouter);
 
 app.get('/', (req, res) => {
-  const articles = [{
-    title: 'Test article',
-    createdAt: Date.now(),
-    description: 'Test Description'
-  }];
+  const articles = [
+    {
+      title: 'Test article',
+      createdAt: Date.now(),
+      description: 'Test Description'
+    },
+    {
+      title: 'Test article2',
+      createdAt: Date.now(),
+      description: 'Test Description2'
+    }
+  ];
   res.render('index', { articles: articles });
 });
 
