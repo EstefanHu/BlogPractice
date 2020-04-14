@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
       description: 'Test Description2'
     }
   ];
-  res.render('index', { articles: articles });
+  res.render('./articles/index', { articles: articles });
 });
 
 app.listen('4000', () => console.log('Listening on Port 4000'));
